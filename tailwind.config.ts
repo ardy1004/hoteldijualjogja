@@ -11,6 +11,15 @@ export default {
         sm: ".1875rem", /* 3px */
       },
       colors: {
+        luxury: {
+          text: "#1C1C1C",
+          muted: "#4B5563",
+          gold: "#C6A75E",
+          bg: "#FFFFFF",
+          soft: "#F8F6F2",
+          premium: "#FAF3E6",
+          alert: "#B91C1C",
+        },
         // Flat / base colors (regular buttons)
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
@@ -83,6 +92,7 @@ export default {
         },
       },
       fontFamily: {
+        display: ["var(--font-display)"],
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
