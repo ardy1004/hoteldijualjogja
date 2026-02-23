@@ -1,0 +1,133 @@
+{
+  "project_name": "Luxury Investment Landing Page - Hotel 41 Rooms Ring 2 Jogja",
+  "objective": "Generate high quality WhatsApp leads from serious investors only (no broker, no mediator)",
+  "design_direction": {
+    "theme": "Hybrid Luxury Hospitality + Corporate Investment",
+    "visual_identity": "Modern, stylish, elegant, premium, credible, prosperous",
+    "background_style": "Bright and luxurious (NO dark mode, NO black dominant sections)",
+    "hero_overlay_rule": "Use light ivory/white gradient overlay max 35% opacity. DO NOT use dark or black overlay.",
+    "color_palette": {
+      "primary_text": "#1C1C1C",
+      "secondary_text": "#4B5563",
+      "accent_gold": "#C6A75E",
+      "background_main": "#FFFFFF",
+      "background_soft_section": "#F8F6F2",
+      "premium_box_background": "#FAF3E6",
+      "alert_border": "#B91C1C"
+    },
+    "typography": {
+      "headline_font": "Playfair Display (luxury serif)",
+      "body_font": "Inter (clean modern sans-serif)"
+    },
+    "layout_principles": [
+      "Mobile-first responsive",
+      "Large whitespace",
+      "Minimalistic luxury",
+      "Soft shadows only",
+      "Rounded corners subtle",
+      "Premium spacing system",
+      "No heavy dark blocks"
+    ]
+  },
+  "hero_section": {
+    "type": "full_background_image",
+    "background_image": "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875314/IMAGE_1_aydkw0.webp",
+    "overlay": "Soft ivory gradient from left (max opacity 35%)",
+    "headline": "Premium Rare Asset Hotel 41 Kamar – Ring 2 Jogja Kota",
+    "subheadline": "Aktif Produktif | Di Bawah Replacement Cost | Opportunity Capital Gain Signifikan",
+    "highlight_points": [
+      "Income 200–400 Juta per Bulan",
+      "Replacement Cost ±32,44 Miliar",
+      "Harga Akuisisi 25 Miliar (Nego)",
+      "SHM & Izin Lengkap"
+    ],
+    "cta_primary": {
+      "text": "Hubungi Kami Sekarang",
+      "style": "Gold background, white text, elegant hover"
+    },
+    "cta_secondary": {
+      "text": "Lihat Analisa Investasi",
+      "style": "Outline gold"
+    }
+  },
+  "gallery_section": {
+    "style": "Luxury masonry grid with lightbox",
+    "images": [
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875316/IMAGE_4_hlotkt.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875324/IMAGE_15_kecszl.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875229/WhatsApp_Image_2022-03-08_at_10.10.52_a6rxob.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875229/unnamed_3_c6nvnv.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875228/unnamed_1_ld5yyn.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875228/WhatsApp_Image_2022-03-03_at_20.31.46_w86x3p.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875228/2023-03-23_tc2nkw.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875229/WhatsApp_Image_2022-03-07_at_14.00.08_cfun0y.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875229/IMG_0234_d33qvp.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875229/IMG_0228_vghvy4.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875230/WhatsApp_Image_2022-07-22_at_11.17.22_uaiugj.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875305/IMAGE_20_djpue9.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875315/IMAGE_2_i2reij.webp",
+      "https://res.cloudinary.com/dhb8b7nrd/image/upload/v1771875321/IMAGE_12_bcgh86.webp"
+    ]
+  },
+  "investment_analysis_section": {
+    "background": "#F8F6F2",
+    "replacement_cost_logic": {
+      "tanah": "2.084 m² x 10.000.000 = 20.840.000.000",
+      "bangunan": "2.900 m² x 4.000.000 = 11.600.000.000",
+      "total": "32.440.000.000",
+      "harga_jual": "25.000.000.000",
+      "margin_potensial": "±7.440.000.000"
+    }
+  },
+  "roi_simulation_section": {
+    "background": "#FFFFFF",
+    "income_range": "200–400 Juta per bulan",
+    "simulation_logic": [
+      "Skenario konservatif 250 juta/bulan = 3 Miliar/tahun",
+      "Gross Yield ±12% dari harga 25M",
+      "Optimisasi 350 juta/bulan = 4,2 Miliar/tahun",
+      "Potensi exit 35–40 Miliar dalam 2–4 tahun"
+    ],
+    "tone": "Professional investment memorandum style"
+  },
+  "legal_section": {
+    "background": "#F8F6F2",
+    "content": [
+      "SHM Bersih",
+      "IMB Lengkap",
+      "Izin Pemondokan Aktif",
+      "Status On Bank (Outstanding ±14M)",
+      "Skema Tebus Bank → AJB Notaris Umum",
+      "Pajak masing-masing pihak",
+      "Biaya notaris dibagi dua"
+    ]
+  },
+  "strict_disclaimer": {
+    "style": "Premium alert box with red border, light background",
+    "content": "Properti ini dipasarkan khusus untuk CALON PEMBELI LANGSUNG (END BUYER). Tidak menerima kerja sama dengan broker, agen, perantara, mediator, atau pihak yang mengatasnamakan pembeli. Jika Anda bukan pembeli langsung dengan kesiapan pembiayaan, mohon tidak menghubungi dan tidak mengisi form. Hanya investor serius yang akan ditanggapi."
+  },
+  "lead_form": {
+    "background": "#FAF3E6",
+    "fields": [
+      { "label": "Nama Lengkap", "type": "text", "required": true },
+      { "label": "Asal Daerah", "type": "text", "required": true },
+      { "label": "Nomor Whatsapp Aktif", "type": "text", "required": true },
+      {
+        "label": "Rencana Pembayaran",
+        "type": "dropdown",
+        "options": ["Cash Keras", "Cash Bertahap", "KPR"],
+        "required": true
+      }
+    ],
+    "submit_behavior": {
+      "method": "redirect_to_whatsapp",
+      "url_format": "https://wa.me/6281391278889?text=Halo%20saya%20calon%20pembeli%20langsung%20Hotel%2041%20Room.%20Nama:%20{{nama}}%20|%20Asal:%20{{asal}}%20|%20No%20WA:%20{{nomor}}%20|%20Pembayaran:%20{{pembayaran}}"
+    }
+  },
+  "conversion_rules": {
+    "single_goal": "WhatsApp Lead Only",
+    "form_required": true,
+    "sticky_whatsapp_button": true,
+    "no_dark_theme_allowed": true
+  }
+}
