@@ -14,7 +14,7 @@ export default function Home() {
       <header className="fixed top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-border/50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="font-bold text-xl tracking-wider text-[#1C1C1C]" style={{ fontFamily: 'var(--font-display)' }}>
-            HOTEL 41 <span className="text-primary italic">JOGJA</span>
+            HOTEL RING 2 <span className="text-primary italic">JOGJA KOTA</span>
           </div>
           <button 
             onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
@@ -38,7 +38,7 @@ export default function Home() {
       <footer className="bg-[#1C1C1C] text-white py-12 border-t-4 border-primary">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'var(--font-display)' }}>
-            Hotel 41 Jogja
+            Hotel Ring 2 JogJakarta Kota
           </h2>
           <p className="text-white/60 mb-8 max-w-lg mx-auto">
             Premium investment opportunity in the heart of Yogyakarta. Exclusive listing for direct buyers.

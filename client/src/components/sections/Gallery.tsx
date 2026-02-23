@@ -64,7 +64,7 @@ export function Gallery() {
             >
               <img 
                 src={src} 
-                alt={`Hotel 41 Gallery ${i+1}`} 
+                alt={`Hotel Ring 2 Gallery ${i+1}`} 
                 className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
