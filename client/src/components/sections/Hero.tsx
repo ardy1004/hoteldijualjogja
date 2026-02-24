@@ -44,8 +44,7 @@ export function Hero() {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-[#1C1C1C] mb-6" style={{ fontFamily: 'var(--font-display)' }}>
               Premium Rare Asset<br />
-              Hotel Ring 2 Kamar<br />
-              <span className="text-primary italic">Ring 2 Jogja Kota</span>
+              <span className="text-primary italic">Hotel Ring 2 Jogja Kota</span>
             </h1>
             
             <p className="text-lg md:text-xl text-[#4B5563] mb-8 leading-relaxed">
