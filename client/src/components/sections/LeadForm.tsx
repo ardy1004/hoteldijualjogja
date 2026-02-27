@@ -4,6 +4,7 @@ import { insertInquirySchema } from "@shared/schema";
 import type { InsertInquiry } from "@shared/schema";
 import { LuxuryButton } from "@/components/ui/luxury-button";
 import { motion } from "framer-motion";
+import { trackLeadSubmission } from "@/lib/metaPixel";
 
 // WhatsApp number for receiving leads
 const WHATSAPP_NUMBER = "6281391278889";
@@ -25,6 +26,15 @@ export function LeadForm() {
   });
 
   const onSubmit = (data: InsertInquiry) => {
+    // Track lead submission to Meta Pixel BEFORE opening WhatsApp
+    // This ensures the event fires even if WhatsApp is blocked
+    trackLeadSubmission({
+      name: data.name,
+      region: data.region,
+      whatsapp: data.whatsapp,
+      paymentPlan: data.paymentPlan,
+    });
+    
     // Format message for WhatsApp
     const message = `*New Lead Inquiry*%0A%0A` +
       `*Nama Lengkap:* ${encodeURIComponent(data.name)}%0A` +
