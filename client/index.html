@@ -16,28 +16,15 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-M3X5J8');
     </script>
-    <script type="text/javascript">
-    window._fbq = window._fbq || [];
-    window._fbq.push = function() {
-      window._fbq.callMethod ? 
-        window._fbq.callMethod.apply(window._fbq, arguments) : 
-        window._fbq.queue.push(arguments);
-    };
-    if (!window._fbq.loaded) {
-      var fbds = document.createElement('script');
-      fbds.async = true;
-      fbds.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      document.getElementsByTagName('head')[0].appendChild(fbds);
-      window._fbq.loaded = true;
-      window._fbq.version = '2.0';
-      window._fbq.queue = [];
-    }
-    </script>
-    <script type="text/javascript">
-    // Only init - PageView will be fired from React after mount
-    if (window.fbq) {
-      window.fbq('init', '1749426109369910');
-    }
+    
+    <!-- Meta Pixel - Standard Loading -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1749426109369910');
     </script>
     <!-- End Meta Pixel Code -->
   </head>
