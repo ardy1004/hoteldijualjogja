@@ -1,87 +1,110 @@
 /**
  * Meta Pixel Utility for React + Vite SPA
  * 
- * This module provides type-safe wrapper functions for Meta Pixel (fbq) events.
- * It handles SPA route tracking and custom event firing.
- * 
+ * Provides safe fbq wrapper with retry logic to prevent race conditions.
  * Pixel ID: 1749426109369910
  */
 
-// Declare fbq on window
 declare global {
   interface Window {
-    fbq: (
-      command: 'init' | 'track' | 'trackSingle' | 'trackSingleCustom',
-      pixelId?: string,
-      params?: Record<string, unknown>
-    ) => void;
+    fbq: ((command: string, ...args: unknown[]) => void) | undefined;
     _fbq: unknown;
   }
 }
 
 const PIXEL_ID = '1749426109369910';
+const MAX_RETRIES = 10;
+const RETRY_INTERVAL_MS = 100;
 
 /**
- * Initialize Meta Pixel
- * Call this once on app mount
+ * Wait for fbq to be available with retry logic
+ * Returns a promise that resolves when fbq is ready
  */
-export function initMetaPixel(): void {
-  if (typeof window === 'undefined') return;
+function waitForFbq(): Promise<void> {
+  return new Promise((resolve) => {
+    if (typeof window === 'undefined') {
+      resolve();
+      return;
+    }
+
+    // If fbq is already available, resolve immediately
+    if (typeof window.fbq === 'function') {
+      resolve();
+      return;
+    }
+
+    // Retry logic
+    let attempts = 0;
+    const checkFbq = () => {
+      attempts++;
+      if (window.fbq) {
+        resolve();
+        return;
+      }
+      
+      if (attempts >= MAX_RETRIES) {
+        console.warn('[MetaPixel] fbq not available after max retries');
+        resolve();
+        return;
+      }
+      
+      setTimeout(checkFbq, RETRY_INTERVAL_MS);
+    };
+    
+    checkFbq();
+  });
+}
+
+/**
+ * Initialize Meta Pixel - call this once on app mount
+ */
+export async function initMetaPixel(): Promise<void> {
+  await waitForFbq();
   
-  // Check if fbq is already loaded
-  if (window.fbq) {
+  if (typeof window.fbq === 'function') {
     console.log('[MetaPixel] Initializing pixel:', PIXEL_ID);
     window.fbq('init', PIXEL_ID);
-  } else {
-    console.warn('[MetaPixel] fbq not loaded yet');
   }
 }
 
 /**
- * Track a standard Meta event
- * @param eventName - Standard event name (PageView, Lead, Purchase, etc.)
- * @param params - Optional event parameters
+ * Track PageView event - safe wrapper with retry
  */
-export function trackEvent(eventName: string, params?: Record<string, unknown>): void {
-  if (typeof window === 'undefined') return;
+export async function trackPageView(): Promise<void> {
+  await waitForFbq();
   
-  if (window.fbq) {
-    console.log(`[MetaPixel] Tracking event: ${eventName}`, params);
-    window.fbq('track', eventName, params);
+  if (typeof window.fbq === 'function') {
+    console.log('[MetaPixel] Tracking PageView');
+    window.fbq('track', 'PageView');
   } else {
-    console.warn('[MetaPixel] fbq not available for event:', eventName);
+    console.warn('[MetaPixel] fbq not available for PageView');
   }
 }
 
 /**
- * Track PageView event
- * Call this on route changes in SPA
+ * Track Lead event - safe wrapper with retry
  */
-export function trackPageView(): void {
-  trackEvent('PageView');
-}
-
-/**
- * Track Lead event
- * Call this when a user submits a lead form
- * @param params - Lead-specific parameters (value, currency, etc.)
- */
-export function trackLead(params?: Record<string, unknown>): void {
-  trackEvent('Lead', params);
-}
-
-/**
- * Track Custom Lead event (QualifiedLead)
- * Use this for more specific lead qualification tracking
- * @param params - Custom parameters for lead qualification
- */
-export function trackQualifiedLead(params?: Record<string, unknown>): void {
-  // For custom events, we use 'track' with event name
-  if (typeof window === 'undefined') return;
+export async function trackLead(params?: Record<string, unknown>): Promise<void> {
+  await waitForFbq();
   
-  if (window.fbq) {
-    console.log('[MetaPixel] Tracking QualifiedLead:', params);
-    // Custom events use track with event name as first param after 'track'
+  if (typeof window.fbq === 'function') {
+    console.log('[MetaPixel] Tracking Lead', params);
+    // Use 'track' with custom event name for custom events
+    window.fbq('track', 'Lead', params);
+  } else {
+    console.warn('[MetaPixel] fbq not available for Lead');
+  }
+}
+
+/**
+ * Track Custom QualifiedLead event - safe wrapper with retry
+ */
+export async function trackQualifiedLead(params?: Record<string, unknown>): Promise<void> {
+  await waitForFbq();
+  
+  if (typeof window.fbq === 'function') {
+    console.log('[MetaPixel] Tracking QualifiedLead', params);
+    // Use 'track' with custom event name for custom events
     window.fbq('track', 'QualifiedLead', params);
   } else {
     console.warn('[MetaPixel] fbq not available for QualifiedLead');
@@ -89,27 +112,37 @@ export function trackQualifiedLead(params?: Record<string, unknown>): void {
 }
 
 /**
- * Track Lead with full data from form submission
- * @param formData - Form data from lead submission
+ * Track lead submission with both Lead and QualifiedLead events
+ * Prevents duplicate calls
  */
-export function trackLeadSubmission(formData: {
+let leadTracked = false;
+
+export async function trackLeadSubmission(formData: {
   name: string;
   region: string;
   whatsapp: string;
   paymentPlan: string;
-}): void {
+}): Promise<void> {
+  // Prevent duplicate tracking
+  if (leadTracked) {
+    console.log('[MetaPixel] Lead already tracked, skipping');
+    return;
+  }
+  
+  leadTracked = true;
+  
   // Track standard Lead event
-  trackLead({
+  await trackLead({
     content_name: 'Lead Form Submission',
     content_category: 'Investment Inquiry',
-    value: 0, // No monetary value for lead
+    value: 0,
     currency: 'IDR',
     region: formData.region,
     payment_plan: formData.paymentPlan,
   });
   
-  // Also track as QualifiedLead for custom tracking
-  trackQualifiedLead({
+  // Track QualifiedLead for custom analytics
+  await trackQualifiedLead({
     lead_type: 'investment_inquiry',
     source: 'website_form',
     name: formData.name,
